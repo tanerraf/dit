@@ -1,11 +1,32 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Smartwyre.DeveloperTest.Data;
+using Smartwyre.DeveloperTest.Runner;
+using Smartwyre.DeveloperTest.Services;
+using System;
 
-namespace Smartwyre.DeveloperTest.Runner;
+using IHost host = CreateHostBuilder(args).Build();
+using var scope = host.Services.CreateScope();
 
-class Program
+var services = scope.ServiceProvider;
+
+try
 {
-    static void Main(string[] args)
-    {
-        throw new NotImplementedException();
-    }
+    services.GetRequiredService<App>().Run(args);
+}
+catch (Exception e)
+{
+    Console.Error.WriteLine(e.Message);
+}
+
+IHostBuilder CreateHostBuilder(string[] strings)
+{
+    return Host.CreateDefaultBuilder()
+        .ConfigureServices((_, services) =>
+        {
+            services.AddSingleton<IRebateDataStore, RebateDataStore>();
+            services.AddSingleton<IProductDataStore, ProductDataStore>();
+            services.AddSingleton<IRebateService, RebateService>();
+            services.AddSingleton<App>();
+        });
 }

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Smartwyre.DeveloperTest.Runner": {
+      "commandName": "Project",
+      "commandLineArgs": "--rebate NEW --product XYZ --volume 10"
+    }
+  }
+}

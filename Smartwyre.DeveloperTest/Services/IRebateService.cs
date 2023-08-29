@@ -5,4 +5,5 @@ namespace Smartwyre.DeveloperTest.Services;
 public interface IRebateService
 {
     CalculateRebateResult Calculate(CalculateRebateRequest request);
+    bool ValidateRequest(CalculateRebateRequest request);
 }

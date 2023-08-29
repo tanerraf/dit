@@ -1,0 +1,16 @@
+[
+  {
+    "Id": 1,
+    "Identifier": "ABC",
+    "Price": 10,
+    "Uom": "EA",
+    "SupportedIncentives": 1
+  },
+  {
+    "Id": 2,
+    "Identifier": "XYZ",
+    "Price": 12.50,
+    "Uom": "FT",
+    "SupportedIncentives": 5
+  }
+]
